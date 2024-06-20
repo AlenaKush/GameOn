@@ -107,24 +107,24 @@ form.addEventListener("submit", (Event) => {
   }
 
   if (formValid) {
-
-    //clean form
-    const container = document.querySelector('.modal-body');
-    container.innerHTML = '';
-
-    //create message
-    const messageEnvoi = document.createElement('div');
-    messageEnvoi.textContent = 'Merci pour votre inscription';
-    container.appendChild(messageEnvoi);
-
-    //create button
-    const btnClose = document.createElement('button');
-    btnClose.textContent = 'Fermer';
-    btnClose.classList.add('button');
-    container.appendChild(btnClose);
-    btnClose.addEventListener('click', () => {
-      modalbg.style.display = 'none';
+    //send the form
+    inscriptionForm.submit(); 
+    //hide all form fields
+    formData.forEach( (element) => {
+    element.style.display = 'none';
     })
+    //show dispatch message
+    const message = document.querySelector('.message');
+    message.style.display = 'block'; 
+
+    //changing the name and functionality of the button submit
+    const button = document.querySelector('.btn-submit');
+    button.value = 'Fermer';
+    button.type = 'button';
+    button.addEventListener("click", closeModal);
+    function closeModal() {
+      modalbg.style.display = "none";
+    }
   }
 });
 
