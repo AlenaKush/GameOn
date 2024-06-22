@@ -42,19 +42,19 @@ form.addEventListener("submit", (Event) => {
   });
 
   //validation first
-  const valueFirst = document.getElementById("first").value;
-  if (valueFirst.length < 5) {
+  const valueFirst = document.getElementById("first").value.trim();
+  if (valueFirst.length < 2) {
     const firstData = document.getElementById('first').parentElement;
-    firstData.setAttribute('data-error', 'Veuillez entrer 5 caractères ou plus pour le champ du prénom.');
+    firstData.setAttribute('data-error', 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.');
     firstData.setAttribute('data-error-visible', 'true');
     formValid = false;
   }
   
   //validation last
-  const valueLast = document.getElementById("last").value;  
-  if (valueLast.length < 5) {
+  const valueLast = document.getElementById("last").value.trim();  
+  if (valueLast.length < 2) {
     const lastData = document.getElementById('last').parentElement;
-    lastData.setAttribute('data-error', 'Veuillez entrer 5 caractères ou plus pour le champ du nom.');
+    lastData.setAttribute('data-error', 'Veuillez entrer 2 caractères ou plus pour le champ du nom.');
     lastData.setAttribute('data-error-visible', 'true');
     formValid = false;
   }
@@ -107,8 +107,6 @@ form.addEventListener("submit", (Event) => {
   }
 
   if (formValid) {
-    //send the form
-    inscriptionForm.submit(); 
     //hide all form fields
     formData.forEach( (element) => {
     element.style.display = 'none';
