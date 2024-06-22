@@ -322,7 +322,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -341,6 +342,10 @@ input[data-error]::after {
   text-align: center;
   font-size: 36px;
   font-weight: 400;
+}
+
+.btn-close {
+  display: none;
 }
 
 /* custom select styles */

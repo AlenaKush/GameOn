@@ -115,6 +115,14 @@ form.addEventListener("submit", (Event) => {
     const message = document.querySelector('.message');
     message.style.display = 'block'; 
 
+    //show close-button
+    const btnClose = document.querySelector('.btn-close');
+    btnClose.style.display = 'block';
+    const btnSubmit = document.querySelector('.btn-submit');
+    btnSubmit.style.display = 'none';
+    btnClose.addEventListener('click', closeModal);
+
+/*
     //changing the name and functionality of the button submit
     const button = document.querySelector('.btn-submit');
     button.value = 'Fermer';
@@ -122,7 +130,7 @@ form.addEventListener("submit", (Event) => {
     button.addEventListener("click", closeModal);
     function closeModal() {
       modalbg.style.display = "none";
-    }
+    }*/
   }
 });
 
