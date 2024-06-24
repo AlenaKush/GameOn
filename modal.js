@@ -25,12 +25,13 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   // Reset form fields and visibility
   formElement.reset();
-  formData.forEach((element) => {
-    element.style.display = 'block';
-  });
-
   message.style.display = 'none';
   btnClose.style.display = 'none';
+  formData.forEach((element) => {
+    element.style.display = 'block';
+    element.removeAttribute('data-error');// Clean errors
+    element.setAttribute('data-error-visible', 'false');
+  });
   btnSubmit.style.display = 'block';
   modalbg.style.display = "block";
 }
@@ -40,16 +41,6 @@ closeForm.addEventListener("click", closeModal)
 
 //closing modal form
 function closeModal() {
-  // Hide message and show form
-  message.style.display = 'none';
-  formElement.style.display = 'block';
-
-  // Clean errors
-  formData.forEach((element) => {
-    element.removeAttribute('data-error');
-    element.setAttribute('data-error-visible', 'false');
-  });
-
   modalbg.style.display = "none";  
 }
 
