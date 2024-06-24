@@ -1,7 +1,8 @@
+//create responsive menu
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
-    x.className += " responsive";
+    x.className += "responsive";
   } else {
     x.className = "topnav";
   }
@@ -12,15 +13,16 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeForm = document.querySelector(".close");
+const message = document.querySelector('.message');
+const formElement = document.querySelector('form');
+const btnClose = document.querySelector('.btn-close'); 
+const btnSubmit = document.querySelector('.btn-submit');
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
-  const formElement = document.querySelector('form');
-  const message = document.querySelector('.message');
-
   // Reset form fields and visibility
   formElement.reset();
   formData.forEach((element) => {
@@ -28,11 +30,8 @@ function launchModal() {
   });
 
   message.style.display = 'none';
-  const btnClose = document.querySelector('.btn-close');
   btnClose.style.display = 'none';
-  const btnSubmit = document.querySelector('.btn-submit');
   btnSubmit.style.display = 'block';
-
   modalbg.style.display = "block";
 }
 
@@ -41,15 +40,12 @@ closeForm.addEventListener("click", closeModal)
 
 //closing modal form
 function closeModal() {
-  const formElement = document.querySelector('form');
-  const message = document.querySelector('.message');
-
   // Hide message and show form
   message.style.display = 'none';
   formElement.style.display = 'block';
 
   // Clean errors
-  document.querySelectorAll('.formData').forEach((element) => {
+  formData.forEach((element) => {
     element.removeAttribute('data-error');
     element.setAttribute('data-error-visible', 'false');
   });
@@ -58,8 +54,7 @@ function closeModal() {
 }
 
 //validation of form 
-const form = document.querySelector('form');
-form.addEventListener("submit", (Event) => {
+formElement.addEventListener("submit", (Event) => {
   Event.preventDefault();
   let formValid = true;
 
@@ -140,16 +135,12 @@ form.addEventListener("submit", (Event) => {
     element.style.display = 'none';
     })
     //show dispatch message
-    const message = document.querySelector('.message');
     message.style.display = 'block'; 
 
     //show close-button
-    const btnClose = document.querySelector('.btn-close');
     btnClose.style.display = 'block';
-    const btnSubmit = document.querySelector('.btn-submit');
     btnSubmit.style.display = 'none';
     btnClose.addEventListener('click', closeModal);
-
   }
 });
 
