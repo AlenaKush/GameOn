@@ -18,6 +18,21 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
+  const formElement = document.querySelector('form');
+  const message = document.querySelector('.message');
+
+  // Reset form fields and visibility
+  formElement.reset();
+  formData.forEach((element) => {
+    element.style.display = 'block';
+  });
+
+  message.style.display = 'none';
+  const btnClose = document.querySelector('.btn-close');
+  btnClose.style.display = 'none';
+  const btnSubmit = document.querySelector('.btn-submit');
+  btnSubmit.style.display = 'block';
+
   modalbg.style.display = "block";
 }
 
@@ -26,7 +41,20 @@ closeForm.addEventListener("click", closeModal)
 
 //closing modal form
 function closeModal() {
-  modalbg.style.display = "none";
+  const formElement = document.querySelector('form');
+  const message = document.querySelector('.message');
+
+  // Hide message and show form
+  message.style.display = 'none';
+  formElement.style.display = 'block';
+
+  // Clean errors
+  document.querySelectorAll('.formData').forEach((element) => {
+    element.removeAttribute('data-error');
+    element.setAttribute('data-error-visible', 'false');
+  });
+
+  modalbg.style.display = "none";  
 }
 
 //validation of form 
@@ -122,15 +150,6 @@ form.addEventListener("submit", (Event) => {
     btnSubmit.style.display = 'none';
     btnClose.addEventListener('click', closeModal);
 
-/*
-    //changing the name and functionality of the button submit
-    const button = document.querySelector('.btn-submit');
-    button.value = 'Fermer';
-    button.type = 'button';
-    button.addEventListener("click", closeModal);
-    function closeModal() {
-      modalbg.style.display = "none";
-    }*/
   }
 });
 
