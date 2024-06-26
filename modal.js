@@ -125,12 +125,12 @@ formElement.addEventListener("submit", (Event) => {
     formData.forEach( (element) => {
     element.style.display = 'none';
     })
+    btnSubmit.style.display = 'none';
     //show dispatch message
     message.style.display = 'block'; 
 
     //show close-button
     btnClose.style.display = 'block';
-    btnSubmit.style.display = 'none';
     btnClose.addEventListener('click', closeModal);
   }
 });
