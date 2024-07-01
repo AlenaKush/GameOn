@@ -2,7 +2,7 @@
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
-    x.className += "responsive";
+    x.className += " responsive";
   } else {
     x.className = "topnav";
   }
@@ -75,7 +75,7 @@ formElement.addEventListener("submit", (Event) => {
 
   //validation email
   const valueEmail = document.getElementById("email").value;
-  const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!regexEmail.test(valueEmail)) {
     const emailData = document.getElementById('email').parentElement;
     emailData.setAttribute('data-error', 'Veuillez entrer un e-mail correct.');
