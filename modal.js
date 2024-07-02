@@ -82,15 +82,25 @@ formElement.addEventListener("submit", (Event) => {
     emailData.setAttribute('data-error-visible', 'true');
     formValid = false;
   }
-
-  //validation birthday
+  
+  // validation birthday
   const valueBirthdate = document.getElementById("birthdate").value;
-  if (!valueBirthdate) {
-    const birthdateData = document.getElementById('birthdate').parentElement;
-    birthdateData.setAttribute('data-error', 'Vous devez entrer votre date de naissance.');
-    birthdateData.setAttribute('data-error-visible', 'true');
-    formValid = false;
-  }
+  const today = new Date();
+  const minDate = new Date('1900-01-01');
+  const Birthdate = new Date(valueBirthdate);
+
+if (!valueBirthdate) {
+  const birthdateData = document.getElementById('birthdate').parentElement;
+  birthdateData.setAttribute('data-error', 'Vous devez entrer votre date de naissance.');
+  birthdateData.setAttribute('data-error-visible', 'true');
+  formValid = false;
+} else if (!(minDate < Birthdate && Birthdate < today)) {
+  const birthdateData = document.getElementById('birthdate').parentElement;
+  birthdateData.setAttribute('data-error', 'Vous devez entrer une date valide.');
+  birthdateData.setAttribute('data-error-visible', 'true');
+  formValid = false;
+}
+
 
   //validationQuantity
   const valueQuantity = document.getElementById("quantity").value;
